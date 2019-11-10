@@ -17,3 +17,11 @@ mix.js('resources/js/app.js', 'public/js')
 mix.browserSync({
     proxy: '127.0.0.1:8000'
 });
+
+// Sourcemaps
+if (!mix.inProduction()) {
+    mix.webpackConfig({
+        devtool: 'source-map'
+    })
+        .sourceMaps()
+}
