@@ -22,6 +22,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::apiResources([
         'shopping-list' => 'ShoppingListController',
         'shopping-items' => 'ShoppingItemController',
+        'shopping-groups' => 'ShoppingGroupController',
     ], ['as' => 'api']);
 
 });

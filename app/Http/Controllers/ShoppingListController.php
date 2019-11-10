@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ShoppingGroup;
 use App\ShoppingList;
 use App\Http\Resources\ShoppingList as ShoppingListResource;
 use Illuminate\Http\Request;
@@ -36,7 +37,11 @@ class ShoppingListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $item = new ShoppingList();
+        $item->shopping_item_id = $request->id;
+        $item->added_user_id = auth()->user()->id;
+        $item->save();
+        return $item;
     }
 
     /**
@@ -79,8 +84,9 @@ class ShoppingListController extends Controller
      * @param  \App\ShoppingList  $shoppingList
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ShoppingList $shoppingList)
+    public function destroy(int $id)
     {
-        //
+        $item = ShoppingList::find($id);
+        $item->delete();
     }
 }

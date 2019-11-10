@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ShoppingGroup;
 use Illuminate\Http\Request;
+use App\Http\Resources\ShoppingGroup as ShoppingGroupResource;
 
 class ShoppingGroupController extends Controller
 {
@@ -14,7 +15,7 @@ class ShoppingGroupController extends Controller
      */
     public function index()
     {
-        //
+        return ShoppingGroupResource::collection(ShoppingGroup::all());
     }
 
     /**
